@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "simple": {
+      "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+      "datefmt": "%Y-%m-%d %H:%M:%S"
+    },
+    "full": {
+      "format": "%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s"
+    }
+  },
+  "handlers": {
+    "console": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "full",
+      "stream": "ext://sys.stdout"
+    },
+    "dashboard_handler": {
+      "class": "logging.handlers.TimedRotatingFileHandler",
+      "level": "DEBUG",
+      "formatter": "full",
+      "filename": "./logs/api/dashboard.log",
+      "interval": 1,
+      "backupCount": 7,
+      "when": "D",
+      "encoding": "utf-8"
+    }
+  },
+  "loggers": {
+    "dashboard": {
+      "level": "DEBUG",
+      "handlers": [
+        "dashboard_handler"
+      ],
+      "propagate": "no"
+    }
+  }
+}
