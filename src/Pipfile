@@ -1,0 +1,25 @@
+[[source]]
+url = "https://mirrors.cloud.tencent.com/pypi/simple"
+verify_ssl = true
+
+[requires]
+python_version = "3.9"
+
+[packages]
+arrow = "*"
+flask = "*"
+flask-cors = "*"
+flask-restx = "*"
+flask-sqlalchemy = "*"
+pymysql = "*"
+requests = "*"
+werkzeug = "*"
+configparser = "*"
+uwsgi = "*"
+pandas = "*"
+yapf = "*"
+celery = "4.3.0"
+
+[dev-packages]
+flake8 = "*"
+yapf = "*"

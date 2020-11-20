@@ -1,0 +1,17 @@
+# IDE file
+.vscode
+logs
+
+#idea
+.idea
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+mysql.ini
+# pip file
+Pipfile.lock
+/uwsgi.pid
+/uwsgi.status
+/conf
+/venv/
