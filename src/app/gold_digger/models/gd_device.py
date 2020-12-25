@@ -9,6 +9,7 @@ from app.common.db import db
 
 class GDDevice(db.Model):
   __tablename__ = 'gd_device_t'
+  dev_uuid = db.Column(db.String(64), unique=True, primary_key=True)
   mac_addr = db.Column(db.String(64), unique=True, nullable=False, primary_key=True)
   provider = db.Column(db.Integer)
   cpu_model = db.Column(db.String(64))
@@ -30,6 +31,7 @@ class GDDevice(db.Model):
   upstream_traffic = db.Column(db.Integer)
   downstream_traffic = db.Column(db.Integer)
   pass_time = db.Column(db.DateTime)
+  link_upload_speed = db.Column(db.Integer)
 
   def __init__(self, data):
     self.mac_addr = data.get("mac_addr")
@@ -53,6 +55,8 @@ class GDDevice(db.Model):
     self.upstream_traffic = data.get("upstream_traffic")
     self.downstream_traffic = data.get("downstream_traffic")
     self.pass_time = data.get("pass_time")
+    self.dev_uuid = data.get("dev_uuid")
+    self.link_upload_speed = data.get("link_upload_speed")
 
   def to_json(self):
     return {
@@ -77,4 +81,6 @@ class GDDevice(db.Model):
       "upstream_traffic" : self.upstream_traffic,
       "downstream_traffic" : self.downstream_traffic,
       "pass_time": self.pass_time,
+      "dev_uuid" : self.dev_uuid,
+      "link_upload_speed" : self.link_upload_speed,
     }

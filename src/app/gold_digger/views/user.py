@@ -5,8 +5,8 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
 
-import json
-from flask import Blueprint, request, current_app
+import json, datetime
+from flask import Blueprint, request, current_app, session
 from flask_restx import Resource
 from flask_login import login_user, login_required, logout_user, current_user
 from itsdangerous import URLSafeSerializer
@@ -55,6 +55,8 @@ class login(Resource):
         result = {'message':'user_name or password not allow'}
         return HttpResponse.normal(ERR_LOGIN.code, ERR_LOGIN.message, result)
       else:
+        session.permanent = True
+        current_app.permanent_session_lifetime = datetime.timedelta(minutes=10)
         login_status = login_user(user)
         token = user.get_id()
         result = {'token':token}

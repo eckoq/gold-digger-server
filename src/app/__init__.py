@@ -43,6 +43,8 @@ def create_app(config_name=None):
 def register_blueprints(app):
   app.register_blueprint(views.dashboard_bp, url_prefix='/gold-digger/dashboard')
   app.register_blueprint(views.user_bp, url_prefix='/gold-digger/user')
+  app.register_blueprint(views.agent_bp, url_prefix='/gold-digger/agent')
+  app.register_blueprint(views.device_manager_bp, url_prefix='/gold-digger/device_manager')
 
 def register_sqlalchemy(app):
   db.init_app(app)
