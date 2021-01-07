@@ -32,6 +32,8 @@ class GDDevice(db.Model):
   downstream_traffic = db.Column(db.Integer)
   pass_time = db.Column(db.DateTime)
   link_upload_speed = db.Column(db.Integer)
+  zone = db.Column(db.String(64))
+  customer = db.Column(db.String(64))
 
   def __init__(self, data):
     self.mac_addr = data.get("mac_addr")
@@ -57,6 +59,8 @@ class GDDevice(db.Model):
     self.pass_time = data.get("pass_time")
     self.dev_uuid = data.get("dev_uuid")
     self.link_upload_speed = data.get("link_upload_speed")
+    self.zone = data.get("zone")
+    self.customer = data.get("customer")
 
   def to_json(self):
     return {
@@ -83,4 +87,6 @@ class GDDevice(db.Model):
       "pass_time": self.pass_time,
       "dev_uuid" : self.dev_uuid,
       "link_upload_speed" : self.link_upload_speed,
+      "zone" : self.zone,
+      "customer" : self.customer,
     }
